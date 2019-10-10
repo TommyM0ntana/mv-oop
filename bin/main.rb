@@ -2,41 +2,44 @@
 # frozen_string_literal: true
 
 class Game
+  require_relative '../lib/player'
   def initialize
-    @player1 = ''
-    @player2 = ''
+    @player1 = nil
+    @player2 = nil
     @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     # Greetings start
     puts 'Hello! Welcome, Lets PLAY TIC TAC TOE ' # TODO: Need beautiful greeting
 
     # First player name (repeat until if empty):
-    while @player1.empty?
-      puts 'What is your name Player One'  # TODO: Ask name of first player
+    while @player1.nil? || @player1.empty?
+      puts 'What is your name Player One' # TODO: Ask name of first player
       @player1 = gets.chomp
       puts 'Please repeat and insert your name Player One' if @player1.empty? # TODO: Report about empty inpit and ask again
       next
     end
+    @player1 = Player.new(@player1)
 
     # Second player name (repeat until if empty):
-    while @player2.empty?
+    while @player2.nil? || @player2.empty?
       puts 'What is your name Player Two' # TODO: Ask name of second player
       @player2 = gets.chomp
       puts 'Please repeat and insert your name Player Two' if @player2.empty? # TODO: Report about empty inpit  and ask again
       next
     end
+    @player2 = Player.new(@player2)
 
     # Greetings wrap
-    puts "Oki-doki, lets play  #{@player1} and #{@player2}. 
+    puts "Oki-doki, lets play  #{@player1.name} and #{@player2.name}.
     Let the best win Ready, Steady GOO..." # TODO: Wrap up greeting and announce game start
 
     # Display current board
     display
 
     # Ask for move first player
-    move(@player1)
+    move(@player1.name)
 
     # Ask for move second player
-    move(@player2)
+    move(@player2.name)
 
     # Declare result
     result('Draw')
@@ -60,7 +63,7 @@ class Game
         @square = gets.chomp
         @square = Integer(@square)
       rescue ArgumentError
-        puts "Pick Integer from 1 to 9 .Tell me you move, #{player} pick a square!"  # TODO: Ask again if input invalid 
+        puts "Pick Integer from 1 to 9 .Tell me you move, #{player} pick a square!" # TODO: Ask again if input invalid
         retry
       end
     end
@@ -72,8 +75,3 @@ class Game
   end
 end
 Game.new
-
-
-
-
-

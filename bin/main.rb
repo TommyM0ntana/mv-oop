@@ -7,26 +7,27 @@ class Game
     @player2 = ''
     @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     # Greetings start
-    puts 'Hello! Welcome ..' # TODO: Need beautiful greeting
+    puts 'Hello! Welcome, Lets PLAY TIC TAC TOE ' # TODO: Need beautiful greeting
 
     # First player name (repeat until if empty):
     while @player1.empty?
-      puts 'Name1:' # TODO: Ask name of first player
+      puts 'What is your name Player One'  # TODO: Ask name of first player
       @player1 = gets.chomp
-      puts 'Please repeat..' if @player1.empty? # TODO: Report about empty inpit and ask again
+      puts 'Please repeat and insert your name Player One' if @player1.empty? # TODO: Report about empty inpit and ask again
       next
     end
 
     # Second player name (repeat until if empty):
     while @player2.empty?
-      puts 'Name2:' # TODO: Ask name of second player
+      puts 'What is your name Player Two' # TODO: Ask name of second player
       @player2 = gets.chomp
-      puts 'Please repeat..' if @player2.empty? # TODO: Report about empty inpita and ask again
+      puts 'Please repeat and insert your name Player Two' if @player2.empty? # TODO: Report about empty inpit  and ask again
       next
     end
 
     # Greetings wrap
-    puts "Oki-doki, guys #{@player1} and #{@player2}. Ready, steady .." # TODO: Wrap up greeting and announce game start
+    puts "Oki-doki, lets play  #{@player1} and #{@player2}. 
+    Let the best win Ready, Steady GOO..." # TODO: Wrap up greeting and announce game start
 
     # Display current board
     display
@@ -54,12 +55,12 @@ class Game
   def move(player)
     @square = nil
     while @square.nil? || @square > 9 || @square < 1
-      puts "Tell me you move, #{player}" # TODO: Ask for move
+      puts "Tell me you move, #{player} pick a square" # TODO: Ask for move
       begin
         @square = gets.chomp
         @square = Integer(@square)
       rescue ArgumentError
-        puts 'integer from 1 to 9, try again:' # TODO: Ask again if input invalid
+        puts "Pick Integer from 1 to 9 .Tell me you move, #{player} pick a square!"  # TODO: Ask again if input invalid 
         retry
       end
     end
@@ -71,3 +72,8 @@ class Game
   end
 end
 Game.new
+
+
+
+
+

@@ -16,8 +16,6 @@ class Board
     @over = false
     # Is there the winner?
     @winner = nil
-    # Print board's initial state
-    print
   end
 
   # Name winner if there is one
@@ -37,19 +35,5 @@ class Board
     find_winner(sign)
     # Check if game over
     @over = true if !@winner.nil? || (@moves['X'] + @moves['O']).length == 9
-    # Print current state
-    print
-    puts "#{sign}: #{@moves[sign]}"
-  end
-
-  # Print board
-  def print
-    puts ' '
-    puts " #{@squares[0]} | #{@squares[1]} | #{@squares[2]}"
-    puts ' --+---+---'
-    puts " #{@squares[3]} | #{@squares[4]} | #{@squares[5]}"
-    puts ' --+---+---'
-    puts " #{@squares[6]} | #{@squares[7]} | #{@squares[8]}"
-    puts ' '
   end
 end

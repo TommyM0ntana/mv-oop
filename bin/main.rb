@@ -14,18 +14,18 @@ class Game
 
     # First player name (repeat if empty):
     while @player1.nil? || @player1.empty?
-      puts 'What is your name Player One'
+      print 'What is your name Player One: '
       @player1 = gets.chomp
-      puts 'Please repeat and insert your name Player One' if @player1.empty?
+      print 'Please repeat and insert your name Player One: ' if @player1.empty?
       next
     end
     @player1 = Player.new(@player1, 'X')
 
     # Second player name (repeat until if empty):
     while @player2.nil? || @player2.empty?
-      puts 'What is your name Player Two'
+      print 'What is your name Player Two: '
       @player2 = gets.chomp
-      puts 'Please repeat and insert your name Player Two' if @player2.empty?
+      print 'Please repeat and insert your name Player Two: ' if @player2.empty?
       next
     end
     @player2 = Player.new(@player2, 'O')
@@ -36,6 +36,9 @@ class Game
 
     # Iniitialize new board
     @board = Board.new
+
+    # Print board's initial state
+    display
 
     # Moves until the end
     @board.turn == 'X' ? move(@player1.name, @player1.sign) : move(@player2.name, @player2.sign) until @board.over
@@ -58,10 +61,12 @@ class Game
   # Handle move
   def move(name, sign, square = nil)
     until valid(square)
-      puts "Tell me your move, #{name} pick a square"
+      print "Tell me your move, #{name} pick a square: "
       square = gets.chomp.to_i
     end
     @board.move(sign, square)
+    # Print current state
+    display
   end
 
   # Announce result
@@ -75,6 +80,18 @@ class Game
     puts text
     puts 'One more? (Yes / No)'
     Game.new if gets.chomp == 'Yes'
+  end
+
+  # Print board
+  def display
+    squares = @board.squares
+    puts ' '
+    puts " #{squares[0]} | #{squares[1]} | #{squares[2]}"
+    puts ' --+---+---'
+    puts " #{squares[3]} | #{squares[4]} | #{squares[5]}"
+    puts ' --+---+---'
+    puts " #{squares[6]} | #{squares[7]} | #{squares[8]}"
+    puts ' '
   end
 end
 Game.new

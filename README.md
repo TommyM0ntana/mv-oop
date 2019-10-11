@@ -4,7 +4,7 @@ In order to gain a deeper understanding of Ruby classes and Object Oriented Prog
 The project is about Tic Tac Toe game, the game allows two players to play against each other.
 To start the game you need to run the main.rb file that is located on bin.
 
-1 .How the game works?
+1. How the game works?
 Each player (1 and 2) at the begining of the game will be asked to enter his name. 
 When the game starts to each player will be assigned O or X to select one square of the grid.
 There are only 9 options and many combinations that can lead you to the victory.
@@ -15,7 +15,7 @@ There are only 9 options and many combinations that can lead you to the victory.
 
 |_| _| _|
 
-2.The winner is the player that can get 3 symbols inline. For example:
+2. The winner is the player that can get 3 symbols inline. For example:
 
 |x| _| _|
 

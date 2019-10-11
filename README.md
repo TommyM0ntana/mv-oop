@@ -10,13 +10,17 @@ When the game starts to each player will be assigned O or X to select one square
 There are only 9 options and many combinations that can lead you to the victory.
 
 |_|_|_|
+
 |_|_|_|
+
 |_|_|_|
 
 2.The winner is the player that can get 3 symbols inline. For example:
 
 |x|_|_|
+
 |_|x|_|
+
 |_|_|x|
 
 3. The player 1 starts the match, then goes to player 2 and vice versa, until there is a winner.

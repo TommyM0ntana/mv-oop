@@ -44,9 +44,18 @@ class Game
     result(@board.winner)
   end
 
+  def validate(square)
+    return false if square.nil?
+    unless square.between?(1, 9)
+      puts 'Pick Integer from 1 to 9 '
+      return false
+    end
+    true
+  end
+ 
   def move(player)
     @square = nil
-    while @square.nil? || @square > 9 || @square < 1
+    unless validate (@square) 
       puts "Tell me you move, #{player} pick a square"
       @square = gets.chomp.to_i # TODO: So far we have zero input validation. Need to check if it is Integer, if it in range (1-9), if square is not taken
     end

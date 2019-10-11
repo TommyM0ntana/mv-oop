@@ -2,36 +2,47 @@
 
 # Store board information
 class Board
-  attr_reader :squares, :wins, :turn, :end, :winner
+  attr_reader :squares, :wins, :turn, :over, :winner
   def initialize
+    # Available squares
     @squares = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    @wins = [[0, 3, 6], [1, 4, 7], [2, 5, 8], [2, 4, 6], [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 4, 8]]
+    # Win combinations
+    @wins = [[1, 4, 7], [2, 5, 8], [3, 6, 9], [3, 5, 7], [1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 5, 9]]
+    # Players moves history
     @moves = { 'X' => [], 'O' => [] }
-    @turn = true
-    @end = false
-    @winner = false
+    # Who's move
+    @turn = 'X'
+    # Game over?
+    @over = false
+    # Is there the winner?
+    @winner = nil
+    # Print board's initial state
     print
   end
 
+  # Name winner if there is one
+  def find_winner(sign)
+    @winner = sign if @wins.any? { |w| w.all? { |e| @moves[sign].include?(e) } }
+  end
+
+  # Process move
   def move(sign, square)
+    # Mark square
     @squares = @squares.each_with_index.map { |e, i| i == square - 1 ? sign : e }
-    @turn = !@turn
-    @moves[sign] << (square - 1)
-    @end = true if won?(sign) || filled?
+    # Swap move turn
+    @turn = @turn == 'X' ? 'O' : 'X'
+    # Update moves history
+    @moves[sign] << square
+    # Check if there is a winner
+    find_winner(sign)
+    # Check if game over
+    @over = true if !@winner.nil? || (@moves['X'] + @moves['O']).length == 9
+    # Print current state
     print
     puts "#{sign}: #{@moves[sign]}"
   end
 
-  def filled?
-    @squares.all? { |e| e == 'O' || e == 'X' }
-  end
-
-  def won?(sign)
-    res = @wins.any? { |w| w.all? { |e| @moves[sign].include?(e) } }
-    @winner = sign if res
-    res
-  end
-
+  # Print board
   def print
     puts ' '
     puts " #{@squares[0]} | #{@squares[1]} | #{@squares[2]}"

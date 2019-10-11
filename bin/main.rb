@@ -12,7 +12,7 @@ class Game
     # Greetings start
     puts 'Hello! Welcome, Lets PLAY TIC TAC TOE '
 
-    # First player name (repeat until if empty):
+    # First player name (repeat if empty):
     while @player1.nil? || @player1.empty?
       puts 'What is your name Player One'
       @player1 = gets.chomp
@@ -34,40 +34,43 @@ class Game
     puts "Oki-doki, lets play  #{@player1.name} and #{@player2.name}.
     Let the best win Ready, Steady GOO..."
 
-    # Display current board
+    # Iniitialize new board
     @board = Board.new
 
     # Moves until the end
-    @board.turn ? move(@player1.name) : move(@player2.name) until @board.end
+    @board.turn == 'X' ? move(@player1.name, @player1.sign) : move(@player2.name, @player2.sign) until @board.over
 
     # Declare result
     result(@board.winner)
   end
 
-  def validate(square)
+  # Valildate move input
+  def valid(square)
     return false if square.nil?
-    unless square.between?(1, 9)
-      puts 'Pick Integer from 1 to 9 '
+
+    until square.between?(1, 9)
+      puts 'Please pick Integer from 1 to 9 '
       return false
     end
     true
   end
- 
-  def move(player)
-    @square = nil
-    unless validate (@square) 
-      puts "Tell me you move, #{player} pick a square"
-      @square = gets.chomp.to_i # TODO: So far we have zero input validation. Need to check if it is Integer, if it in range (1-9), if square is not taken
+
+  # Handle move
+  def move(name, sign, square = nil)
+    until valid(square)
+      puts "Tell me your move, #{name} pick a square"
+      square = gets.chomp.to_i
     end
-    @board.turn ? @board.move(@player1.sign, @square) : @board.move(@player2.sign, @square)
+    @board.move(sign, square)
   end
 
+  # Announce result
   def result(winner)
     if winner
       name = winner == 'X' ? @player1.name : @player2.name
       text = "And we have the winner! It is #{name}!"
     else
-      text = 'It is a Draw guys, well played'
+      text = 'It is a Draw guys, well played!'
     end
     puts text
     puts 'One more? (Yes / No)'

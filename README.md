@@ -26,13 +26,19 @@ There are only 9 options and many combinations that can lead you to the victory.
 3. The player 1 starts the match, then goes to player 2 and vice versa, until there is a winner.
  In the end, you can choose to continue playing or leave the game.
 
-4. Assignment Page
+4. How to run code:
+- clone repo: git clone https://github.com/b-a-a-s/mv-oop
+- got to dir: cd mv-oop
+- make main.rb executable: chmod +x bin/main.rb
+- run main.rb: bin/main.rb
+
+5. Assignment Page
 [The Odin Project: Advanced Building Blocks - Assignment #2](https://www.theodinproject.com/courses/ruby-programming/lessons/oop)
 
-2. Build Whit: [Ruby](https://www.ruby-lang.org/it/)
+6. Build Whit: [Ruby](https://www.ruby-lang.org/it/)
 
-3. Source code: https://github.com/b-a-a-s/mv-oop
+7. Source code: https://github.com/b-a-a-s/mv-oop
 
-4. Authors:
+8. Authors:
 - **Alex Baas** - [@b-a-a-s](https://github.com/b-a-a-s)
 - **Tommy M0ntana** - [@TommyM0ntana](https://github.com/TommyM0ntana)

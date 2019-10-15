@@ -1,5 +1,5 @@
 # [TIC TAC TOE GAME](https://en.wikipedia.org/wiki/Tic-tac-toe)
-In order to gain a deeper understanding of Ruby classes and Object Oriented Programming.
+In order to gain a deeper understanding of Ruby classes and Object Oriented Programming
 
 The project is about Tic Tac Toe game, the game allows two players to play against each other.
 To start the game you need to run the main.rb file that is located on bin.

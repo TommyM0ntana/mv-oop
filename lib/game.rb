@@ -13,8 +13,11 @@ class Game
     @players << Player.new(name, sign)
   end
 
-  def add_move(sign, square = nil)
+  def add_move(sign, square)
+    return if !sign || !square
+
     @board.move(sign, square)
+    true
   end
 end
 Game.new

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Board
-  attr_reader :squares, :turn, :over, :winner, :moves
+  attr_reader :squares, :turn, :over, :winner, :moves, :wins
   def initialize
     @squares = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     @wins = [[1, 4, 7], [2, 5, 8], [3, 6, 9], [3, 5, 7], [1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 5, 9]]
@@ -16,10 +16,13 @@ class Board
   end
 
   def move(sign, square)
+    return if !square || !sign
+
     @squares = @squares.each_with_index.map { |e, i| i == square - 1 ? sign : e }
     @turn = @turn == 'X' ? 'O' : 'X'
     @moves[sign] << square
     find_winner(sign)
     @over = true if !@winner.nil? || (@moves['X'] + @moves['O']).length == 9
+    true
   end
 end

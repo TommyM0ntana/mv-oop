@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'game'
+require_relative '../lib/game'
 
 RSpec.describe Game, '#initialize' do
   context 'initialize with defaults' do

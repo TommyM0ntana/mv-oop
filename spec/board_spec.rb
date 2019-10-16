@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'board'
+require_relative '../lib/board'
 
 RSpec.describe Board, '#initialize' do
   context 'initialize with defaults' do

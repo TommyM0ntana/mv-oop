@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'player'
+require_relative '../lib/player'
 
 RSpec.describe Player, '#initialize' do
   context 'initialize with nils' do

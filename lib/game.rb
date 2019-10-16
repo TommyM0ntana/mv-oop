@@ -6,12 +6,14 @@ class Game
   attr_reader :board, :players
   def initialize
     @board = Board.new
-    puts "winner #{@board.find_winner('X')}"
     @players = []
   end
 
   def add_player(name, sign)
+    return if !name || !sign
+
     @players << Player.new(name, sign)
+    true
   end
 
   def add_move(sign, square)

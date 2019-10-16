@@ -35,10 +35,12 @@ There are only 9 options and many combinations that can lead you to the victory.
 5. Assignment Page
 [The Odin Project: Advanced Building Blocks - Assignment #2](https://www.theodinproject.com/courses/ruby-programming/lessons/oop)
 
-6. Build Whit: [Ruby](https://www.ruby-lang.org/it/)
+6. Build With: [Ruby](https://www.ruby-lang.org/it/)
 
 7. Source code: https://github.com/b-a-a-s/mv-oop
 
-8. Authors:
+8. Tests: run this command in project's root for testing: bundler exec rspec --format doc
+
+9. Authors:
 - **Alex Baas** - [@b-a-a-s](https://github.com/b-a-a-s)
 - **Tommy M0ntana** - [@TommyM0ntana](https://github.com/TommyM0ntana)

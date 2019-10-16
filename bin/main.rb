@@ -67,8 +67,12 @@ while @repeat
   game = Game.new
   p1 = get_name(game, 'X')
   p2 = get_name(game, 'O')
-  puts "Oki-doki, lets play  #{p1} and #{p2}. Let the best win Ready, Steady GOO..."
+  puts "Oki-doki, lets play  #{p1} and #{
+         p2
+       }. Let the best win Ready, Steady GOO..."
   display(game.board.squares)
-  game.board.turn == 'X' ? get_move(game, p1, 'X') : get_move(game, p2, 'O') until game.board.over
+  until game.board.over
+    game.board.turn == 'X' ? get_move(game, p1, 'X') : get_move(game, p2, 'O')
+  end
   report_result(game.board.winner, p1, p2)
 end

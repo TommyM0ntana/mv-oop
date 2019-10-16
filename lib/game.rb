@@ -6,6 +6,7 @@ class Game
   attr_reader :board, :players
   def initialize
     @board = Board.new
+    puts "winner #{@board.find_winner('X')}"
     @players = []
   end
 

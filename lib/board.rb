@@ -2,6 +2,8 @@
 
 class Board
   attr_reader :squares, :turn, :over, :winner, :moves, :wins
+  private_class_method :find_winner
+
   def initialize
     @squares = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     @wins = [[1, 4, 7], [2, 5, 8], [3, 6, 9], [3, 5, 7], [1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 5, 9]]

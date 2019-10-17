@@ -38,4 +38,33 @@ RSpec.describe Board, '#move' do
       expect(board.move('X', 2)).to be true
     end
   end
+  context 'make a win moves' do
+    let(:board) { Board.new }
+    it 'return winner' do
+      board.move('X', 1)
+      board.move('O', 2)
+      board.move('X', 5)
+      board.move('O', 3)
+      board.move('X', 5)
+      board.move('O', 6)
+      board.move('X', 9)
+      expect(board.winner).to eq 'X'
+    end
+  end
+  context 'make a draw moves' do
+    let(:board) { Board.new }
+    it 'return board.over and no winner' do
+      board.move('X', 1)
+      board.move('O', 2)
+      board.move('X', 3)
+      board.move('O', 5)
+      board.move('X', 4)
+      board.move('O', 6)
+      board.move('X', 8)
+      board.move('O', 7)
+      board.move('X', 9)
+      expect(board.over).to be true
+      expect(board.winner).to be_nil
+    end
+  end
 end

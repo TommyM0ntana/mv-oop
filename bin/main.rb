@@ -5,6 +5,8 @@ require_relative '../lib/game'
 
 @repeat = true
 def display(squares)
+  return unless squares
+
   puts ' '
   puts " #{squares[0]} | #{squares[1]} | #{squares[2]}"
   puts ' --+---+---'
@@ -32,12 +34,10 @@ def validate_move(moves, square)
     puts 'Please pick Integer from 1 to 9 '
     return false
   end
-
   while (moves['X'] + moves['O']).include?(square)
     puts 'Square is taken. Please choose another one'
     return false
   end
-
   true
 end
 
@@ -61,18 +61,18 @@ def report_result(winner, p1, p2)
   puts 'One more? (Yes / No)'
   @repeat = false unless gets.chomp == 'Yes'
 end
+
 while @repeat
-
   puts 'Hello! Welcome, Lets PLAY TIC TAC TOE '
-
   game = Game.new
   p1 = get_name(game, 'X')
   p2 = get_name(game, 'O')
-
-  puts "Oki-doki, lets play  #{p1} and #{p2}. Let the best win Ready, Steady GOO..."
+  puts "Oki-doki, lets play  #{p1} and #{
+         p2
+       }. Let the best win Ready, Steady GOO..."
   display(game.board.squares)
-
-  game.board.turn == 'X' ? get_move(game, p1, 'X') : get_move(game, p2, 'O') until game.board.over
-
+  until game.board.over
+    game.board.turn == 'X' ? get_move(game, p1, 'X') : get_move(game, p2, 'O')
+  end
   report_result(game.board.winner, p1, p2)
 end
